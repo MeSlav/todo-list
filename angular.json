@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
             "scripts": []
           },
@@ -120,5 +121,8 @@
       }
     }
   },
-  "defaultProject": "todo-list"
+  "defaultProject": "todo-list",
+  "cli": {
+    "analytics": false
+  }
 }

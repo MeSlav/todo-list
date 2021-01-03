@@ -1,0 +1,21 @@
+<div id="item">
+    <input type="checkbox" id="check" (click)="onCheck()" [checked]="item.isDone">
+    <h3 id="title" [class.grayed]="item.isDone" *ngIf="!item.isEditable">{{ item.title }}</h3>
+
+    <input type="text" 
+    [(ngModel)]="item.title" 
+    *ngIf="item.isEditable" 
+    id="editInput"  
+    (blur)="onEdit()"
+    (keyDown.enter) ="onBlur($event)"
+    (keyDown.escape) = "onBlur($event)"
+    autofocus>
+
+    <i class="far fa-edit" style="font-size:20px" id="edit" (click)="onEdit()" *ngIf="!item.isEditable"></i>
+    <i class="fas fa-check"
+    *ngIf="item.isEditable"
+    id="edit"
+    style="font-size:20px"
+    ></i>
+    <i class="fa fa-trash-o" id="trash" style="font-size:20px" (click)="onClick()"></i>
+</div>

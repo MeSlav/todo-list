@@ -1,0 +1,99 @@
+<div class="fixed">
+
+    <h2 *ngIf="!titleIsEditable">{{ title }} 
+        <i class="fas fa-pen" 
+        style="font-size: 25px;" 
+        id="editTitle" (click)="onTitleEdit(false)"></i>
+    </h2>
+
+    <div id="changeTitle" *ngIf="titleIsEditable">
+        <input type="text" 
+        [(ngModel)]="title"
+        (blur)="onBlur($event)"
+        (keyUp.enter)="onTitleEdit(false)"
+        (keyUp.escape)="onTitleEdit(true)"
+        autofocus>
+
+        <i class="fas fa-times" 
+        id="cancel"
+        (click)="onTitleEdit(true)"></i>
+
+        <i class="fas fa-check" 
+        id="save"
+        (click)="onTitleEdit(false)"></i>
+    </div>
+
+    <input type="text" (keyUp.enter) = "addTodo($event)" id="inputTodo" placeholder="Input a todo">
+</div>
+
+<div id="list" [ngSwitch]="currentFilter">
+
+    <div class="flex-container filterTodos" *ngIf="hasItems()">
+        <div class="all flex-item" (click)="setFilter('all')" [class.flex-item-active]="checkFilter('all')">
+            <p>All</p>
+        </div>
+        <div class="checked flex-item" (click)="setFilter('checked')" [class.flex-item-active]="checkFilter('checked')">
+            <p>Checked</p>
+        </div>
+        <div class="unchecked flex-item" (click)="setFilter('unchecked')" [class.flex-item-active]="checkFilter('unchecked')">
+            <p>Unchecked</p>
+        </div>
+    </div>
+
+    <ng-container *ngSwitchCase="'all'">
+
+        <h3 id="empty" [hidden]="hasItems()">{{ updateNotHaveMessage() }}</h3>
+        
+        <todo-item 
+        *ngFor="let todo of notDoneTodos()" 
+        [item]="todo" 
+        (delete)="deleteTodo($event)"
+        (check)="updateCheck()"
+        ></todo-item>
+
+        <div class="checkedMessage" [hidden]="!hasChecked()">
+            <h3 id="empty">Done items</h3>
+        </div>
+
+        <todo-item 
+        *ngFor="let todo of doneTodos()" 
+        [item]="todo" 
+        (delete)="deleteTodo($event)" 
+        (check)="updateCheck()"></todo-item>
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'checked'">
+
+        <h3 id="empty" [hidden]="doneTodos().length > 0">{{ updateNotHaveMessage() }}</h3>
+
+        <todo-item 
+        *ngFor="let todo of doneTodos()" 
+        [item]="todo" 
+        (delete)="deleteTodo($event)" 
+        (check)="updateCheck()"></todo-item>
+
+    </ng-container>
+
+
+    <ng-container *ngSwitchCase="'unchecked'">
+
+        <h3 id="empty" [hidden]="notDoneTodos().length > 0">{{ updateNotHaveMessage() }}</h3>
+
+        <todo-item 
+        *ngFor="let todo of notDoneTodos()" 
+        [item]="todo" 
+        (delete)="deleteTodo($event)" 
+        (check)="updateCheck()"></todo-item>
+
+    </ng-container>
+
+</div>
+
+<div id="footer">
+    <button (click)="deleteSelected(); updateCheck()" [disabled]="!hasChecked()" [class.disabled]="!hasChecked()">Delete selected</button>
+    <div id="selectAll">
+        <input type="checkbox" id="horns" name="horns" (click)="selectAll()" [disabled]="!hasItems()||!updateCheck()" #horns>
+        <label for="horns" [class.disabled]="horns.disabled">Select all</label>
+    </div>
+</div>

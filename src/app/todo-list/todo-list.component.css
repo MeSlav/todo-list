@@ -1,0 +1,183 @@
+#horns:disabled{
+  cursor: not-allowed !important;
+}
+
+.disabled{
+  cursor: not-allowed !important;
+  color: gray;
+}
+
+#changeTitle{
+  position: relative;
+  font-size: 20px;
+  position: relative;
+  width: 90%;
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+#changeTitle>*{
+  margin: 0px 5px
+}
+
+#changeTitle input{
+  position: relative;
+  height: 20px;
+  width: 60%;
+  top: -3px;
+}
+
+#cancel{
+  float: right;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+#cancel:hover{
+  color: red;
+}
+
+#save{
+  float: right;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+#save:hover{
+  color: blue;
+}
+
+#editTitle{
+  cursor: pointer;
+  transition: ease .5s;
+  color: gray;
+}
+
+#editTitle:hover{
+    color: rgb(107, 107, 255);
+}
+
+#list::-webkit-scrollbar-track
+{
+  background-color: #ffffff;
+}
+
+#list::-webkit-scrollbar
+{
+  width: 15px;
+  background-color: #F5F5F5;
+}
+
+#list::-webkit-scrollbar-thumb
+{
+  border-radius: 15px;
+  background-color: rgb(219, 219, 219);
+}
+
+#list{
+    height: 65vh;
+    width: 100%;    
+    position: relative;
+    margin: 130px auto;
+    overflow-y: scroll;
+    margin-bottom: 0px;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.flex-item{
+  background-color: rgb(219, 219, 219);
+  margin: 5px 5px;
+  padding: 5px 15px;
+  border-radius: 30px;
+  font-size: small;
+  cursor: pointer;
+  transition: ease .5s;
+}
+
+.flex-item p{
+  margin: 0;
+}
+
+.flex-item:hover, .flex-item-active{
+  background-color: #7094ff;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+#inputTodo{
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 300px;
+    height: 30px;
+    border-radius: 30px;
+    border: 0px;
+    text-align: center;
+    background-color: rgb(219, 219, 219);
+}
+
+.fixed{
+    width: 100%;
+    top: 0;
+    position: fixed;
+    margin: 0 auto;
+    background-color: white;
+    z-index: 5;
+    border-bottom: 1px solid  rgb(219, 219, 219);
+}
+
+#empty{
+    color: gray;
+    margin-bottom: 10px;
+}
+
+.checkedMessage{
+  border-bottom: 1px solid gray;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+#footer{
+  width: 100%;
+  position: relative;
+  border-top: 1px solid rgb(219, 219, 219);
+  height: 15vh;
+  box-sizing: border-box;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  padding: 2vh 0px;
+}
+
+#selectAll{
+  margin:5px 0px;
+}
+
+#selectAll>*{
+  cursor: pointer;
+}
+
+#footer button{
+  background-color: rgb(219, 219, 219);
+  padding: 5px 15px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: ease .5s;
+  outline: none;
+}
+
+#footer button:hover{
+  background-color: #7094ff;
+}
